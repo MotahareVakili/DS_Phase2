@@ -1,0 +1,106 @@
+
+insert: o(n)   n=number of columns
+پیچیدگی زمانی مربوط به حلقه وایل که در بدترین حالت به اندازه تعداد ستون یا تعداد داده های لینک لیست تکرار خواهد شد 
+
+ while (tp->get_next()!=temp->trailer && tp->get_next()->get_column()<col)
+    {
+        tp=tp->get_next();
+    }
+
+remove: o(n)    n=number of columns  
+linl_list::find
+پیچیدگی زمانی مربوط به حلقه وایل داخل تابع کلاس لینک لیست(فایند) که در بدترین حالت به اندازه تعداد ستون یا تعداد داده های لینک لیست تکرار خواهد شد
+
+ while (tp->get_next()!=trailer)
+    {
+       if(tp->get_next()->get_column()==column)
+           return tp;
+       tp=tp->get_next();
+    }
+
+search:o(n*m)   m=number of columns , n=n=number of rows
+پیچیدگی زمانی مربوط به حلقه فور وحلقه وایل که هر کدام در بدترین حالت به اندازه تعداد سطر و ستون تکرار خواهند شد
+
+for(int i=0;i<row;i++)
+    {
+        link_list* temp=(*vector)[i];
+        node * tp=temp->header;
+        while (tp->get_next()!=temp->trailer)
+        {
+            if(tp->get_next()->get_data()==value)
+            {cout<<"value exists in matrix\n";return;}
+            tp=tp->get_next();
+        }
+    }
+
+update:o(n)     n=number of columns 
+
+linl_list::find
+پیچیدگی زمانی مربوط به حلقه وایل داخل تابع کلاس لینک لیست(فایند) که در بدترین حالت به اندازه تعداد ستون یا تعداد داده های لینک لیست تکرار خواهد شد
+
+ while (tp->get_next()!=trailer)
+    {
+       if(tp->get_next()->get_column()==column)
+           return tp;
+       tp=tp->get_next();
+    }
+
+
+print:
+
+type(0):o(n*m)   m=number of columns , n=n=number of rows
+
+پیچیدگی زمانی مربوط به حلقه فور وحلقه وایل که هر کدام در بدترین حالت به اندازه تعداد سطر و ستون تکرار خواهند شد
+
+for(int i=0;i<row;i++)
+       {
+           link_list* temp=(*vector)[i];
+           node * tp=temp->header;
+           while (tp->get_next()!=temp->trailer)
+           {
+
+               printf("%d %d %d \n",i,tp->get_next()->get_column(),tp->get_next()->get_data());
+               tp=tp->get_next();
+
+           }
+       }
+ 
+type(1):o(n*m^2)   m=number of columns , n=n=number of rows
+
+پیچیدگی زمانی مربوط به دو حلقه فور وحلقه وایل که هر کدام در بدترین حالت به اندازه تعداد سطر و ستون تکرار خواهند شد
+
+for(int i=0;i<row;i++)
+       {
+           link_list* temp=(*vector)[i];
+           node * tp=temp->header;
+           int tmp=-1;
+           while (tp->get_next()!=temp->trailer)
+           {
+              int clmn=tp->get_next()->get_column();
+              for(int j=tmp+1;j<clmn;j++)
+              printf("0\t");
+              printf("%d\t",tp->get_next()->get_data());
+              tmp=clmn;
+              tp=tp->get_next();
+
+           }
+
+save_file:o(n*m^2)   m=number of columns , n=n=number of rows
+
+پیچیدگی زمانی مربوط به دو حلقه فور وحلقه وایل که هر کدام در بدترین حالت به اندازه تعداد سطر و ستون تکرار خواهند شد
+
+for(int i=0;i<row;i++)
+    {
+        link_list* temp=(*vector)[i];
+        node * tp=temp->header;
+        int tmp=-1;
+        while (tp->get_next()!=temp->trailer)
+        {
+           int clmn=tp->get_next()->get_column();
+           for(int j=tmp+1;j<clmn;j++)
+           qst<<'0'<<",";
+           qst<<QString::number(tp->get_next()->get_data())<<",";
+           tmp=clmn;
+           tp=tp->get_next();
+
+        }
